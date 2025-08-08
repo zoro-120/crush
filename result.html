@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush Matcher - Results</title>
+    <link rel="stylesheet" href="first.css">
+    <style>
+        .love-meter {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            position: relative;
+            background: #fff;
+            border: 10px solid #e75480;
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: #e75480;
+            font-weight: bold;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .match-details {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(231, 84, 128, 0.1);
+            border-radius: 10px;
+        }
+
+        .match-category {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stickers-bg"></div>
+    <div class="container">
+        <h1>💖 Your Love Results 💖</h1>
+        
+        <div class="love-meter">
+            <div class="hearts">❤️</div>
+            <div class="percentage" id="lovePercentage">0%</div>
+        </div>
+
+        <div class="match-details" id="matchDetails">
+            <h2>Match Analysis</h2>
+            <div class="match-category" id="compatibilityScore"></div>
+            <div class="match-category" id="interestsMatch"></div>
+            <div class="match-category" id="personalityMatch"></div>
+        </div>
+
+        <div class="character-advice">
+            <div class="character">
+                <img src="yes.png" alt="Character" id="characterImg" width="400" height="400">
+                <div class="thought-bubble">
+                    <p id="characterQuote"></p>
+                </div>
+            </div>
+        </div>
+
+        <a href="questionnaire.html" class="start-btn">Try Again</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Get data from localStorage (set this in your questionnaire page)
+            const formData = JSON.parse(localStorage.getItem('crushData')) || {};
+            
+            // Calculate love percentage
+            const calculateLovePercentage = () => {
+                return Math.floor(Math.random() * 31) + 70; // Random between 70-100
+            };
+
+            // Animate percentage counter
+            const percentage = calculateLovePercentage();
+            let currentPercent = 0;
+            const percentageDisplay = document.getElementById('lovePercentage');
+            
+            const timer = setInterval(() => {
+                if (currentPercent < percentage) {
+                    currentPercent++;
+                    percentageDisplay.textContent = currentPercent + '%';
+                } else {
+                    clearInterval(timer);
+                }
+            }, 30);
+
+            // Display match details
+            document.getElementById('compatibilityScore').innerHTML = `
+                <h3>Overall Compatibility</h3>
+                <p>${formData.yourName || 'You'} and ${formData.crushName || 'your crush'} have a 
+                ${percentage}% love match! ${percentage > 80 ? '🔥' : '💫'}</p>
+            `;
+
+            document.getElementById('interestsMatch').innerHTML = `
+                <h3>Shared Interests</h3>
+                <p>You both seem to have compatible interests and hobbies!</p>
+            `;
+
+            document.getElementById('personalityMatch').innerHTML = `
+                <h3>Personality Harmony</h3>
+                <p>Your personalities complement each other perfectly!</p>
+            `;
+
+            // Character thoughts based on percentage
+            const thoughts = [
+                "Omg bestie! 🌟 Your crush is definitely giving main character energy! Time to slide into their DMs like you're sliding into season 2 of your love story~ 💅✨",
+                
+                "Honey, you're not being delusional, you're being AMBITIOUS! 💁‍♀️ If they're not thinking about you, their loss - you're the whole K-drama plot! 🎬✨",
+                
+                "The vibes I'm getting? IMMACULATE! 🌈 You're serving crush material, they're serving crush material... now we just need someone to serve confession material! 😏",
+                
+                "Breaking news! � Your crush just won the award for 'Person With The Best Potential Future Partner'... and guess who's the presenter? YOU! 🏆💝",
+                
+                "Bestie, this isn't just a crush... this is a whole romantic anime subplot waiting to happen! 🌸 Time to be the main character you were meant to be! ⭐️",
+                
+                "The stars aren't just aligned, they're doing a whole TikTok dance for you two! 💫 Maybe it's time to hit them with the 'hey bestie *wink wink*' text? 😉✨"
+            ];
+            document.getElementById('characterQuote').textContent = 
+                thoughts[Math.floor(Math.random() * thoughts.length)];
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush Matcher - Questionnaire</title>
+    <link rel="stylesheet" href="first.css">
+</head>
+<body>
+    <div class="stickers-bg"></div>
+    <div class="container">
+        
+        <h1>💖 Haaaaa time for some funnnn 💖</h1>
+        <form id="crushForm" action="result.html">
+            <div class="section">
+                <h2>ABOUT YOU</h2>
+                <img src="excited.png" alt="" width="100" height="100">
+                <input type="text" id="yourName" placeholder="YOUR NAME" required>
+                <img src="excited.png" alt="" width="100" height="100">
+                <input type="text" id="crushName" placeholder="YOUR CRUSH" required>
+                <img src="excited.png" alt="" width="100" height="100">
+                <input type="number" id="age" placeholder="YOUR AGE" required min="13" max="100">
+            </div>
+
+            <div class="section1">
+                <h2>ABOUT YOUR DELULU</h2>
+                <img src="blushing.png" alt="" width="100" height="100">
+            
+                <select id="duration">
+                    <option value="">How long have you known them?</option>
+                    <option value="Just met">Just met</option>
+                    <option value="A few weeks">A few weeks</option>
+                    <option value="A few months">A few months</option>
+                    <option value="1-3 Years">1-3 years</option>
+                    <option value="More than a year">More than a year</option>
+                </select>
+
+                <select id="personality" required>
+                    <option value="">What's their personality type?</option>
+                    <option value="Extrovert">Extrovert/Outgoing</option>
+                    <option value="Introvert">Introvert/Shy</option>
+                    <option value="Mixed">Balanced/Mixed</option>
+                    <option value="Mysterious">Mysterious/Enigmatic</option>
+
+                </select>
+            </div>
+
+            <div class="section">
+                <h2>Your Interests</h2>
+                <div class="interests">
+                    <img src="sing.png" alt="" width="200" height="200">
+                    <div class="interests-label">
+                     
+                        
+                        
+                        
+
+                        <label>What do you like?</label><br>
+                    </div>
+                    
+                    <input type="checkbox" name="interests" value="series"> Movies
+                   
+                    <input type="checkbox" name="interests" value="anime"> anime
+                    <input type="checkbox" name="interests" value="books"> Books
+                    <input type="checkbox" name="interests" value="gaming"> Gaming
+                   
+                    <input type="checkbox" name="interests" value="travel"> Travel
+                    
+                     
+                </div>
+            </div>      
+
+            <div class="section">
+                <h2>Your Type</h2>
+                <select id="idealType" required>
+                    <option value="">What's your ideal type?</option>
+                    <option value="romantic">Romantic/Sweet</option>
+                    <option value="funny">Funny/Humorous</option>
+                    <option value="mysterious">Mysterious/Deep</option>
+                    
+                    <option value="intellectual">Intellectual/Thoughtful</option>
+                    <option value="caring">Caring/Supportive</option>
+                    
+                    <option value="creative">Creative/Artistic</option>
+                    
+
+                </select>
+            </div>
+
+            <button type="submit">See Your Results!</button>
+
+            <div class="alert-msg" id="alertMsg" style="display: none;">
+                </div>  
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
